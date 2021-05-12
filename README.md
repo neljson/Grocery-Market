@@ -1,4 +1,4 @@
-# SuperM React
+# Grocery Market (built with React hooks and Stripe Checkout integration)
 
 run app with `npm install` and then `npm run start`
 

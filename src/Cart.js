@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import Input from "./Input.js";
-import Button from "./Button.js";
+import React, { useState } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import Input from './Input.js';
+import Button from './Button.js';
 
 // TODO: Replace with your own publishable key
-const stripeLoadedPromise = loadStripe("PK_REPLACE_WITH_YOUR_PUBLISHABLE_KEY");
+const stripeLoadedPromise = loadStripe('PK_REPLACE_WITH_YOUR_PUBLISHABLE_KEY');
 
 export default function Cart({ cart }) {
   const totalPrice = cart.reduce(
@@ -12,7 +12,7 @@ export default function Cart({ cart }) {
     0
   );
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
 
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -25,9 +25,9 @@ export default function Cart({ cart }) {
       stripe
         .redirectToCheckout({
           lineItems: lineItems,
-          mode: "payment",
-          successUrl: "https://superm.react-tutorial.app/",
-          cancelUrl: "https://superm.react-tutorial.app/",
+          mode: 'payment',
+          successUrl: 'https://superm.react-tutorial.app/',
+          cancelUrl: 'https://superm.react-tutorial.app/',
           customerEmail: email,
         })
         .then((response) => {
@@ -42,7 +42,7 @@ export default function Cart({ cart }) {
   }
 
   return (
-    <div className="cart-layout">
+    <div className='cart-layout'>
       <div>
         <h1>Your Cart</h1>
         {cart.length === 0 && (
@@ -50,15 +50,15 @@ export default function Cart({ cart }) {
         )}
         {cart.length > 0 && (
           <>
-            <table className="table table-cart">
+            <table className='table table-cart'>
               <thead>
                 <tr>
-                  <th width="25%" className="th-product">
+                  <th width='25%' className='th-product'>
                     Product
                   </th>
-                  <th width="20%">Unit price</th>
-                  <th width="10%">Quanity</th>
-                  <th width="25%">Total</th>
+                  <th width='20%'>Unit price</th>
+                  <th width='10%'>Quanity</th>
+                  <th width='25%'>Total</th>
                 </tr>
               </thead>
               <tbody>
@@ -68,10 +68,10 @@ export default function Cart({ cart }) {
                       <td>
                         <img
                           src={product.image}
-                          width="30"
-                          height="30"
-                          alt=""
-                        />{" "}
+                          width='30'
+                          height='30'
+                          alt=''
+                        />{' '}
                         {product.name}
                       </td>
                       <td>${product.price}</td>
@@ -85,30 +85,26 @@ export default function Cart({ cart }) {
               </tbody>
               <tfoot>
                 <tr>
-                  <th colSpan="2"></th>
-                  <th className="cart-highlight">Total</th>
-                  <th className="cart-highlight">${totalPrice}</th>
+                  <th colSpan='2'></th>
+                  <th className='cart-highlight'>Total</th>
+                  <th className='cart-highlight'>${totalPrice}</th>
                 </tr>
               </tfoot>
             </table>
-            <form className="pay-form" onSubmit={handleFormSubmit}>
+            <form className='pay-form' onSubmit={handleFormSubmit}>
               <p>
                 Enter your email and then click on pay and your products will be
                 delivered to you on the same day!
                 <br />
-                <em>
-                  Enter your own Stripe Publishable Key in Cart.js for the
-                  checkout to work
-                </em>
               </p>
               <Input
-                placeholder="Email"
+                placeholder='Email'
                 onChange={(event) => setEmail(event.target.value)}
                 value={email}
-                type="email"
+                type='email'
                 required
               />
-              <Button type="submit">Pay</Button>
+              <Button type='submit'>Pay</Button>
             </form>
           </>
         )}

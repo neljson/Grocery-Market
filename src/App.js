@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Navbar from "./Navbar.js";
-import Home from "./Home.js";
-import About from "./About.js";
-import Products from "./Products.js";
-import ProductDetails from "./ProductDetails.js";
-import Cart from "./Cart.js";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Navbar from './Navbar.js';
+import Home from './Home.js';
+import About from './About.js';
+import Products from './Products.js';
+import ProductDetails from './ProductDetails.js';
+import Cart from './Cart.js';
 
 function App() {
   // lazy useState initialization for expensive call to localStorage
   const [cart, setCart] = useState(function () {
-    const savedString = localStorage.getItem("cart");
     let savedCart = [];
     try {
-      savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+      savedCart = JSON.parse(localStorage.getItem('cart')) || [];
     } catch (error) {
       savedCart = [];
     }
@@ -22,7 +21,7 @@ function App() {
 
   useEffect(() => {
     if (cart) {
-      localStorage.setItem("cart", JSON.stringify(cart));
+      localStorage.setItem('cart', JSON.stringify(cart));
     }
   }, [cart]);
 
@@ -63,25 +62,25 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar cart={cart} />
-      <div className="container">
+      <div className='container'>
         <Switch>
-          <Route exact path="/">
+          <Route exact path='/'>
             <Home />
           </Route>
-          <Route exact path="/about">
+          <Route exact path='/about'>
             <About />
           </Route>
-          <Route exact path="/products">
+          <Route exact path='/products'>
             <Products
               cart={cart}
               onProductAdd={handleProductAdd}
               onProductDelete={handleProductDelete}
             />
           </Route>
-          <Route path="/products/:id">
+          <Route path='/products/:id'>
             <ProductDetails onProductAdd={handleProductAdd} />
           </Route>
-          <Route exact path="/cart">
+          <Route exact path='/cart'>
             <Cart cart={cart} />
           </Route>
         </Switch>

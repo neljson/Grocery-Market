@@ -4,7 +4,9 @@ import Input from './Input.js';
 import Button from './Button.js';
 
 // TODO: Replace with your own publishable key
-const stripeLoadedPromise = loadStripe('PK_REPLACE_WITH_YOUR_PUBLISHABLE_KEY');
+const stripeLoadedPromise = loadStripe(
+  'sk_test_51J3n7ZAvqK1K95t2zhhrFxPVh5ovVfVZpfT567zvipCskzGJKl0sqKAEGIo3ufJmLiSjXpayUg1XWnhwGFkiVQJN00S9jXN3rF'
+);
 
 export default function Cart({ cart }) {
   const totalPrice = cart.reduce(
@@ -26,8 +28,8 @@ export default function Cart({ cart }) {
         .redirectToCheckout({
           lineItems: lineItems,
           mode: 'payment',
-          successUrl: 'https://superm.react-tutorial.app/',
-          cancelUrl: 'https://superm.react-tutorial.app/',
+          successUrl: 'https://eager-villani-90dd30.netlify.app/',
+          cancelUrl: 'https://eager-villani-90dd30.netlify.app/',
           customerEmail: email,
         })
         .then((response) => {

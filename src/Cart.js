@@ -3,7 +3,6 @@ import { loadStripe } from '@stripe/stripe-js';
 import Input from './Input.js';
 import Button from './Button.js';
 
-// TODO: Replace with your own publishable key
 const stripeLoadedPromise = loadStripe(
   'pk_test_51J3n7ZAvqK1K95t27ZpkR67YXYYYbLe9tAKVqOjBwZ6rEvdvXbbHDX0zIf0PhG61xLYBfrOTo9veTBtjXI0ULY1w00vj20Yir3'
 );
@@ -23,13 +22,15 @@ export default function Cart({ cart }) {
       return { price: product.price_id, quantity: product.quantity };
     });
 
+    // TODO: change success and cancel URL. Bad practice to rely on URL to validate payment
+    // normally handeled by back-end with Stripe API.
     stripeLoadedPromise.then((stripe) => {
       stripe
         .redirectToCheckout({
           lineItems: lineItems,
           mode: 'payment',
-          successUrl: 'https://eager-villani-90dd30.netlify.app/',
-          cancelUrl: 'https://eager-villani-90dd30.netlify.app/',
+          successUrl: 'https://myreactmarket.com',
+          cancelUrl: 'https://myreactmarket.com',
           customerEmail: email,
         })
         .then((response) => {

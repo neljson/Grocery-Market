@@ -12,7 +12,7 @@ export default function Products(props) {
       image:
         'https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto/v1607769454/react-tutorial/products/final/cheese.png',
       name: 'Cheese',
-      price: 10,
+      price: 1.5,
       price_id: 'price_1JAiEPAvqK1K95t2AWfdBsYL',
     },
     {
@@ -21,16 +21,16 @@ export default function Products(props) {
       image:
         'https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto/v1607769454/react-tutorial/products/final/milk.png',
       name: 'Milk',
-      price: 5,
+      price: 3.6,
       price_id: 'price_1JAiBtAvqK1K95t2cS7IrvkR',
     },
     {
-      description: '1 piece of tomato',
+      description: '1 whole tomato',
       id: 3,
       image:
         'https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto/v1607769454/react-tutorial/products/final/tomato.png',
       name: 'Tomato',
-      price: 2.75,
+      price: 0.5,
       price_id: 'price_1JAiAQAvqK1K95t2WPwukaX6',
     },
     {
@@ -39,7 +39,7 @@ export default function Products(props) {
       image:
         'https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto/v1607769454/react-tutorial/products/final/pineapple.png',
       name: 'Pineapple',
-      price: 3.25,
+      price: 2.0,
       price_id: 'price_1JAiErAvqK1K95t2vUDVUVe3',
     },
   ];
